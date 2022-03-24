@@ -1,0 +1,32 @@
+.burger_wrap {
+  border: 2px solid #747475;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 900;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  i {
+    font-size: 50px;
+    color: #747475;
+  }
+
+  &:hover {
+    border: 2px solid rgb(82, 79, 79);
+    i {
+      color: rgb(82, 79, 79);
+    }
+  }
+  visibility: hidden;
+}
+
+@media (max-width: 900px) {
+  .burger_wrap {
+    visibility: visible;
+  }
+}

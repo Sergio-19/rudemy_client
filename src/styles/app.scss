@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+@import "./variables.scss";
+@import "./layout.scss";
+@import "./header.scss";
+@import "./burger.scss";
+@import "./mainBanner.scss";
+@import "./mainStand.scss";
+@import "./mainSlider.scss";
+@import "./courseCard.scss";
+@import "./benefits.scss";
+@import "./topCategory.scss";
+@import "./footer.scss";
+@import "./menu.scss";
+@import "./coursesPage.scss";
+@import "./courseSearchCard.scss";
+@import "./coursePage.scss";
+@import "./teacherCard.scss";
+@import "./review.scss";
+@import "./buyNow.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Lato", sans-serif;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  p {
+    font-family: "Roboto", sans-serif;
+    font-size: 19px;
+  }
+
+  li,
+  span {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+  }
+}

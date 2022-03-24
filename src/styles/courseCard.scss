@@ -1,0 +1,45 @@
+.course_card {
+  min-width: 250px;
+  max-width: 260px;
+  height: 290px;
+  //   min-height: 250px;
+  //   max-height: 270px;
+  margin: 10px;
+  //   background: green;
+  padding: 5px;
+  border: 1px solid #d1d7dc;
+}
+
+.course_card_img {
+  width: 100%;
+  height: 130px;
+  margin-bottom: 5px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.course_card_author {
+  color: #5d5e5f;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.course_card_rating {
+  strong {
+    color: #b4690e;
+    font-size: 17px;
+  }
+
+  span {
+    color: #e59819;
+    margin-right: 3px;
+    margin-left: 3px;
+  }
+  small {
+    color: #5d5e5f;
+    font-size: 15px;
+  }
+}
