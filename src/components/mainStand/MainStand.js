@@ -1,8 +1,36 @@
 import React from 'react'
 import MainSlider from './MainSlider';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCourses, getCurrentCategoryActionCreator, getCurrentCourseHome } from '../../store/mainReducer';
 
 
 const MainStand = () => {
+
+    const {categories, currentCategory, homeCourses} = useSelector((state)=> state.mainReducer)
+    const dispatch = useDispatch()
+
+    const listArr = [{title: 'Разработка', category: 'development'}, 
+                     {title: 'Бизнес', category: 'business'},
+                     {title: 'Здоровье и фитнес', category: 'health'},
+                     {title: 'Дизайн', category: 'design'},
+                     {title: 'Финансы', category: 'finance'},
+                     {title: 'Маркетинг', category: 'marketing'},
+                     {title: 'Фото и Видео', category: 'photovideo'},]
+
+    function changeCategory(category){
+        dispatch(getCurrentCategoryActionCreator(category))
+    } 
+    
+    function getCoursesHandler(category) {
+        dispatch(fetchCourses(category))
+    }
+
+    function getCurrentCourseHomeHandler(courseId, authorId){
+        dispatch(getCurrentCourseHome(courseId, authorId))
+    }
+   
+                          
 
     return(
         <div className='main_stand_wrap'>
@@ -13,16 +41,21 @@ const MainStand = () => {
                 </div>
                 <div className='main_stand_nav'>
                     <ul>
-                        <li><a href='/'>Python</a></li>
-                        <li><a href='/'>Javascript</a></li>
-                        <li><a href='/'>Веб-разработка</a></li>
-                        <li><a href='/'>Дизайн</a></li>
-                        <li><a href='/'>Финансы</a></li>
-                        <li><a href='/'>Маркетинг</a></li>
-                        <li><a href='/'>Фото и Видео</a></li>
+                        {listArr.map((item, i)=> {
+                            return (
+                                <li onClick={()=> changeCategory(item.category)} key = {i}>
+                                    <span style = {{color: currentCategory === item.category ? '#000' : '#6a6f73'}}>{item.title}</span>
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
-                <MainSlider />
+                <MainSlider  categories={categories} 
+                             currentCategory = {currentCategory} 
+                             getCoursesHandler = {getCoursesHandler}
+                             homeCourses = {homeCourses}
+                             getCurrentCourseHomeHandler = {getCurrentCourseHomeHandler}
+                             />
             </div>
            
 

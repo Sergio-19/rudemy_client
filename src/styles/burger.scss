@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 .burger_wrap {
   border: 2px solid #747475;
   width: 75px;
@@ -7,7 +9,7 @@
   align-items: center;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 900;
+  z-index: $burger_index;
   position: fixed;
   top: 10px;
   left: 20px;

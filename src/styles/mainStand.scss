@@ -27,8 +27,9 @@
     li {
       display: inline-block;
       margin: 8px 16px 0 0;
+      cursor: pointer;
 
-      a {
+      span {
         text-decoration: none;
         color: #6a6f73;
         font-size: 19px;

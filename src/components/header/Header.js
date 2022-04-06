@@ -1,30 +1,52 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 
-const Header = () => {
+const Header = ({showMenuHandler, tokenState, fetchMyCoursesHandler}) => {
+
+  
+            
+
+    function logoutHandler() {
+        localStorage.removeItem('token')
+        localStorage.removeItem('userId')
+        
+    }
 
     return(
         <header>
             <div className='header_logo'>
-                <a href='/'>Rudemy</a>
+                <Link to='/'>Rudemy</Link>
             </div>
-            <span className='header_category'>Категории</span>
+            <span className='header_category' onClick = {showMenuHandler} >Категории</span>
             <div className='header_input'>
                 <div className='header_input_search'>
-                <i class="fa fa-search" />
+                <i className="fa fa-search" />
                 </div>
                 <input type = "text" placeholder='Ищите что угодно'/>
             </div>
-            {/* <span className='header_category'>Моё обучение</span> */}
+
+            {tokenState !== '' ? <>
+            <Link to = '/education' 
+                  className='header_category'
+                  >Моё обучение</Link>
             <div className='header_buttons'>
-                <div className='button_light'>
-                    <a href = "/">Войти</a>
-                </div>
-                <div className='button_light'>
-                    <a href='/'>Регистрация</a>
+                <div className='button_light' onClick = {logoutHandler}>
+                    <a href  ='/' >Выйти</a>
                 </div>
             </div>
+            </> : 
+                <div className='header_buttons'>
+                <div className='button_light'>
+                    <Link to = "/signin">Войти</Link>
+                </div>
+                <div className='button_light'>
+                    <Link to ='/signup'>Регистрация</Link>
+                </div>
+            </div>
+            }
+      
           
         </header>
     )

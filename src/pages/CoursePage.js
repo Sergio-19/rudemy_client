@@ -1,50 +1,63 @@
 import React from 'react'
+import MyLoader from '../components/loader/MyLoader';
+import Rating from '../components/rating/Rating';
 import Review from '../components/review/Review';
 import Section2 from '../components/section2/Section2';
 import Section2Card from '../components/section2Card/Section2Card';
 import TeacherCard from '../components/teacher/TeacherCard';
-import course from '../img/course.png'
 
 
 
-const CoursePage = () => {
+
+const CoursePage = ({currentCourse, teacher}) => {
+
+
+    const {fullname, logo, shortdescription, 
+           rating, language, creationDate, 
+           price, oldPrice, students, 
+           skills, knowledge, description, author } = currentCourse
+
+    const skillsArr = String(skills).split('#') 
+    const knowledgeArr = String(knowledge).split('#')
+
+    // const skillsArr = []
+    // const knowledgeArr = []
+          
+
     return(
         <div className='course_page'>
+           {Object.keys(currentCourse).length > 0 && Object.keys(teacher).length > 0? 
+            <>
             <div className='section1'>
                 <div className='section1_img'>
-                    <img src={course}/>
+                    <img src={logo}/>
                 </div>
                 <div className='section1_info'>
                 <h1>
-                    Полный курс по Javascript + React, с нуля до результата
+                    {fullname}
                 </h1>
                 <p>
-                    Освойте самый популярный язык программирования - Javascript.
-                    Оствойте библиотеку React и научитесь применять на практике!
+                   {shortdescription} 
                 </p>
 
                <div className='section1_info_rating'>
                <span>
-                    4,8 &nbsp;
-                    <i className='fa fa-star'/>
-                    <i className='fa fa-star'/>
-                    <i className='fa fa-star'/>
-                    <i className='fa fa-star'/>
-                    <i className='fa fa-star'/>
+                    {rating} &nbsp;
+                    <Rating rating = {rating}/>
                 </span>
                 <small>
-                    33246 студентов
+                    {students} студентов
                 </small>
 
                </div>
 
-               <p>Автор:  &nbsp;<span><a href='/'>Иван Петриченко</a></span></p>
-               <p>Язык:  &nbsp;<span>Русский</span></p>
+               <p>Автор:  &nbsp;<span><a href='/'>{teacher.fullname}</a></span></p>
+               <p>Язык:  &nbsp;<span>{language}</span></p>
 
-               <p>Последнее обновление: 03.2022</p>
+               <p>Последнее обновление: {creationDate}</p>
 
                <div className='section1_info_price'>
-                   <span>1290 руб. &nbsp; <small>5490 руб.</small></span>
+                   <span>{price} руб. &nbsp; <small>{oldPrice} руб.</small></span>
                </div>
 
                <div className='section1_info_btn'>
@@ -64,31 +77,30 @@ const CoursePage = () => {
 
            
             <Section2 title={"Чему вы научитесь"}>
-                <Section2Card />
-                <Section2Card />
-                <Section2Card />
-                <Section2Card />
-                <Section2Card />
-                <Section2Card />
-                <Section2Card />
+                {skillsArr.map((item, i)=> {
+                    return(
+                        <Section2Card text = {item} key = {i}/>
+                    )
+                })}
+                
             </Section2>
             <Section2 title= "Требования">
             <ul>
-                <li>Базовые навыки HTML, CSS (Крайне желательно пройти курс Web-разработчик, это первая часть)</li>
-                <li>Любой редактор кода</li>
-                <li>Желание выучить JavaScript</li>
-                <li>Желательно базовое знание английского языка</li>
+                {knowledgeArr.map((item, i)=> {
+                    return (
+                        <li key = {i}>{item}</li>
+                    )
+                })}
+                
             </ul>
             </Section2>
             <Section2 title= "Описание">
             <p>
-             Этот курс направлен на подробное изучение JavaScript без воды, но главное - немедленное применение его на практике.
-             Это значит, что вы получите материал для работы и мы вместе будем создавать реальные проекты шаг за шагом.
-             Вторая часть курса - это изучение самой популярной библиотеки на основе JavaScript - React.js со всеми необходимыми технологиями (в том числе и Redux)
+             {description}
              </p>
             </Section2>
             <Section2 title = "Преподаватель">
-                <TeacherCard />
+                <TeacherCard teacher = {teacher}/>
             </Section2>
             <Section2 title = "Отзывы">
                <Review user = "Максим"/>
@@ -98,6 +110,10 @@ const CoursePage = () => {
                <Review user = "Andrei Z"/>
                <Review user = "Виктор"/>
             </Section2>
+            </>
+           : <MyLoader />
+            
+           }
 
         </div>
     )

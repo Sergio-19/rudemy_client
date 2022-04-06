@@ -1,11 +1,11 @@
 import React from 'react'
 
 
-const Burger = () => {
+const Burger = ({navIsOpenHandler}) => {
 
     return(
-        <div className='burger_wrap'>
-            <i class="fa fa-bars" />
+        <div className='burger_wrap' onClick = {navIsOpenHandler}>
+            <i className="fa fa-bars" />
         </div>
     )
 }

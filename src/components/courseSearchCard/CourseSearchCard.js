@@ -1,43 +1,54 @@
 import React from 'react'
-import course from '../../img/course.png'
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getCurrentCourses } from '../../store/mainReducer';
+import Rating from '../rating/Rating';
 
 
-const CourseSearchCard = () => {
+
+const CourseSearchCard = ({course, arg, arg2, teacher}) => {
+
+    const dispatch = useDispatch()
+
+    function getCurrentCoursesHandler(courseId, authorId){
+        dispatch(getCurrentCourses(courseId, authorId))
+      }
+
+const {rating, fullname, logo, shortdescription, price, oldPrice, students} = course
+
 
     return(
-        <div className='course_search_card'>
-            <div className='course_search_card_img'>
-                <img src= {course} alt = "image"/>   
+        <Link to = '/course' className='course_search_card' onClick={()=> getCurrentCoursesHandler(arg, arg2)}>
+            <div className='course_search_card_img'
+                   
+            >
+                <img src= {logo} alt = "image"/>   
              </div> 
             <div className='course_search_card_info'>
             <h3 className='course_card_head'>
-                Веб разработка - с нуля до профессионала. Full Stack
+                {fullname}
             </h3>
             <p className='course_search_card_description'>
-                Доступно и просто для новичков. Начните с основ и пройдтье весь путь до создания собственных приложений
+                {shortdescription}
             </p>
-            <p className='course_card_author'>Youra Allakhverdov</p>
+            <p className='course_card_author'>{teacher.fullname}</p>
             <p className='course_card_rating'>
-                <strong>4,4</strong>
+                <strong>{rating}</strong>
                 <span>
-                <i class="fa fa-star" />
-                <i class="fa fa-star" />
-                <i class="fa fa-star" />
-                <i class="fa fa-star" />
-                <i class="fa fa-star-half" />
+                <Rating rating = {rating}/>
                 </span>
-                <small>(1792)</small>
+                <small>({students})</small>
                 </p>
 
             </div>
             <div className='course_search_card_price'>
                 <span>
-                    <strong>1290 руб.</strong><br/>
-                    <small>5490 руб.</small>    
+                    <strong>{price} руб.</strong><br/>
+                    <small>{oldPrice} руб.</small>    
                 </span> 
             </div>  
 
-        </div>
+        </Link>
     )
 }
 

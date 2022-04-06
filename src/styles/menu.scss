@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 .menu_wrap {
   width: 270px;
   padding: 10px;
@@ -7,7 +9,20 @@
   position: absolute;
   top: 74px;
   left: 180px;
-  z-index: 800;
+  z-index: $menu_index;
+  visibility: hidden;
+}
+
+.menu_header {
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+
+  i {
+    font-size: 28px;
+    color: #646568;
+    cursor: pointer;
+  }
 }
 
 .menu_wrap_links {
@@ -21,7 +36,7 @@
       a {
         text-decoration: none;
         color: #1c1d1f;
-        font-size: 16px;
+        font-size: 18px;
         &:hover {
           color: #646568;
           border-bottom: 1px solid #83858a;
@@ -29,4 +44,8 @@
       }
     }
   }
+}
+
+.menu_wrap_show {
+  visibility: visible;
 }

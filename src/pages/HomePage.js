@@ -8,13 +8,15 @@ import mainBanner from '../img/main-banner.jpg'
 
 
 
-const HomePage = () => {
+const HomePage = ({homeCourses, getCurrentCourseHomeHandler}) => {
     return(
         <>
         <MainBanner img = {mainBanner}/>
         <MainStand/> 
         <Benefits /> 
-        <TopSlider />
+        <TopSlider homeCourses = {homeCourses}
+                   getCurrentCourseHomeHandler = {getCurrentCourseHomeHandler} 
+        />
         <TopCategory />
         </>
     )

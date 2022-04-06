@@ -5,7 +5,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 
 .header_logo {
@@ -18,9 +18,11 @@ header {
 }
 
 .header_category {
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
   padding: 5px 15px;
+  text-decoration: none;
+  color: #000;
 }
 
 .header_input {
