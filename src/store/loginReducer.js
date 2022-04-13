@@ -171,10 +171,10 @@ export function signUpAction(email, password, name) {
      let userId = `user_ID_${generatePassword(14)}`
 
     try{
-        const response = await axios.post('http://localhost:5000/auth/registration', {email, password, name, userId})
+        const response = await axios.post('http://45.67.59.112:8080/auth/registration', {email, password, name, userId})
         dispatch(serverMessageActionCreator(response.data.message))
         if(response.data.token){
-            const res = await axios.post('http://localhost:5000/auth/login', {email, password})
+            const res = await axios.post('http://45.67.59.112:8080/auth/login', {email, password})
             const data = res.data
             dispatch(serverMessageActionCreator(data.message))
             if(data.token){
@@ -200,7 +200,7 @@ export function signUpAction(email, password, name) {
 export function signInAction(email, password) {
     return async (dispatch) => {
 
-        try{    const response = await axios.post('http://localhost:5000/auth/login', {email, password})
+        try{    const response = await axios.post('http://45.67.59.112:8080/auth/login', {email, password})
                 const data = response.data
                 dispatch(serverMessageActionCreator(data.message))
                 if(data.token){
@@ -217,7 +217,7 @@ export function signInAction(email, password) {
 
 export function fetchPrivate(userId, token) {
         return async (dispatch) => {
-            const response = await axios.post('http://localhost:5000/auth/person/user', {userId})
+            const response = await axios.post('http://45.67.59.112:8080/auth/person/user', {userId})
             const data = response.data
             if(data.user){
                 const user = data.user

@@ -22,6 +22,7 @@ import { changeInputActionCreator, fetchPrivate, signInAction, signUpAction } fr
 import EducationPage from './pages/EducationPage';
 import { courseTitleActionCreator, currentLessonActionCreator, fetchLessons, fetchMyCourses } from './store/mycoursesReducer';
 import MyCourse from './pages/MyCourse';
+import { changeQueryInput, getSearch, postSearchQuery } from './store/searchReducer';
 
 
 
@@ -40,6 +41,8 @@ function App() {
   const myCourses = useSelector((state)=> state.mycoursesReducer.courses)
   const myLoading = useSelector((state)=> state.mycoursesReducer.loading)
   const {lessons, courseTitle, currentLesson} = useSelector((state) => state.mycoursesReducer)
+
+  const {query} = useSelector((state)=> state.searchReducer)
 
 
   function fetchLessonsHandler(courseId, fullname){
@@ -92,6 +95,18 @@ function navGetCoursesHandler(category) {
   dispatch(navOpenActionCreator())
 }
 
+function changeSearchHandler(event) {
+  dispatch(changeQueryInput(event.target.value))
+}
+
+function postKey(event) {
+  dispatch(postSearchQuery(event))
+}
+
+function searchHandler(value) {
+  dispatch(getSearch(value))
+}
+
 
 
 useEffect(()=>{
@@ -118,6 +133,10 @@ useEffect(()=>{
       <Header showMenuHandler = {showMenuHandler} 
               hideMenuHandler = {hideMenuHandler}
               tokenState = {tokenState}
+              changeSearchHandler = {changeSearchHandler}
+              searchHandler = {searchHandler}
+              postKey = {postKey}
+              query = {query}
               />
       {homeCourses.length > 0 && loading?
         <Layout>
@@ -131,6 +150,7 @@ useEffect(()=>{
                                                             courses = {courses}
                                                             loading = {loading}
                                                             teacher = {teacher}
+                                                            query = {query}
                                                           
                                                             />} />
           <Route path = "/course" element = {<CoursePage  currentCourse = {currentCourse} 

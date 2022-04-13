@@ -86,7 +86,7 @@ header {
 
 @media (max-width: 900px) {
   .header_input {
-    display: none;
+    margin-top: 10px;
   }
 
   .header_buttons {
@@ -98,8 +98,10 @@ header {
   }
 
   header {
+    height: 120px;
+    padding: 10px 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
   }
 }

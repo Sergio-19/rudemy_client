@@ -70,7 +70,7 @@ export function fetchMyCourses(coursesArray){
         const courses = []
             dispatch(myCoursesNotLoading())
            await coursesArray.forEach((courseId)=> {
-                axios.post('http://localhost:5000/course/getcourse', {courseId: String(courseId).trim()}).
+                axios.post('http://45.67.59.112:8080/course/getcourse', {courseId: String(courseId).trim()}).
                 then((response)=>{
                     if(response.data.course){
                         courses.push(response.data.course)
@@ -88,7 +88,7 @@ export function fetchMyCourses(coursesArray){
 
 export function fetchLessons(courseId){
     return async (dispatch) => {
-       const response = await axios.post('http://localhost:5000/course/getlessons', {courseId})
+       const response = await axios.post('http://45.67.59.112:8080/course/getlessons', {courseId})
         if(response.data.message){console.log(response.data.message)} else {
            const arr = response.data.lessons
           dispatch(getLessonsActionCreator(arr)) 

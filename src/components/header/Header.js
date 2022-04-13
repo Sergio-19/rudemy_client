@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
-const Header = ({showMenuHandler, tokenState, fetchMyCoursesHandler}) => {
+const Header = ({showMenuHandler, tokenState, fetchMyCoursesHandler, changeSearchHandler, postKey, query, searchHandler}) => {
 
   
             
@@ -14,17 +14,38 @@ const Header = ({showMenuHandler, tokenState, fetchMyCoursesHandler}) => {
         
     }
 
+    const navigate = useNavigate()
+
+    function goCourses(){
+        navigate('/courses')
+    }
+
+
+   async function searchClickHandler(value) {
+       await searchHandler(value)
+         goCourses()   
+    }
+
+ 
     return(
         <header>
             <div className='header_logo'>
-                <Link to='/'>Rudemy</Link>
+                <a href ='/'>Rudemy</a>
             </div>
             <span className='header_category' onClick = {showMenuHandler} >Категории</span>
             <div className='header_input'>
                 <div className='header_input_search'>
-                <i className="fa fa-search" />
+                <i className="fa fa-search" 
+                   onClick={window.location.href === 'http://localhost:3001/' ? goCourses : ()=> searchHandler(query)} 
+                />
                 </div>
-                <input type = "text" placeholder='Ищите что угодно'/>
+                <input type = "text" 
+                       value = {query} 
+                       placeholder='Ищите что угодно' 
+                       onChange={(event)=> changeSearchHandler(event)}
+                       onKeyDown = {(event)=> postKey(event)}
+                       onInput = {goCourses}
+                       />
             </div>
 
             {tokenState !== '' ? <>

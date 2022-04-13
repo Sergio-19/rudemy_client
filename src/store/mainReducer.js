@@ -129,7 +129,7 @@ export function getCurrentCourseHome(courseId, authorId){
                 dispatch(notLoadingActionCreator())
                 dispatch(clearCurrentCourseActionCreator())
                 dispatch(clearTeacherActionCreator())
-                const response = await axios.post('http://localhost:5000/course/teacher', {authorId})
+                const response = await axios.post('http://45.67.59.112:8080/course/teacher', {authorId})
                const data = response.data 
                const teacher = data.author[0]  
                dispatch(getTeacherActionCreator(teacher))
@@ -145,7 +145,7 @@ export function getCurrentCourses(courseId, authorId){
                 dispatch(notLoadingActionCreator())
                 dispatch(clearCurrentCourseActionCreator())
                 dispatch(clearTeacherActionCreator())
-                const response = await axios.post('http://localhost:5000/course/teacher', {authorId})
+                const response = await axios.post('http://45.67.59.112:8080/course/teacher', {authorId})
                 const data = response.data 
                 const teacher = data.author[0]  
                 dispatch(getTeacherActionCreator(teacher))  
@@ -173,7 +173,7 @@ export function clearCurrentCourseActionCreator(){
 export function fetchCourses(category = 'development'){
         return async (dispatch) => {
                 dispatch(notLoadingActionCreator())
-               const response = await axios.post('http://localhost:5000/course/allcourses', {category})
+               const response = await axios.post('http://45.67.59.112:8080/course/allcourses', {category})
                const data = response.data
                const courses = data.courses
                dispatch(fetchCoursesActionCreator(courses))
@@ -185,7 +185,7 @@ export function fetchCourses(category = 'development'){
 export function fetchHomeCourses(){
         return async (dispatch) => {
                 dispatch(notLoadingActionCreator())
-             const response = await axios.get('http://localhost:5000/course/getallcourses')
+             const response = await axios.get('http://45.67.59.112:8080/course/getallcourses')
              const data = response.data
              const courses = data.courses
              dispatch(homeCoursesActionCreator(courses))

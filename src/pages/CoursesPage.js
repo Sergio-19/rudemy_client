@@ -3,7 +3,7 @@ import CourseSearchCard from '../components/courseSearchCard/CourseSearchCard';
 
 
 
-const CoursesPage = ({categories, currentCategory, courses, loading, teacher}) => {
+const CoursesPage = ({categories, currentCategory, courses, loading, teacher, query}) => {
 
 
     
@@ -12,7 +12,8 @@ const CoursesPage = ({categories, currentCategory, courses, loading, teacher}) =
         {courses.length > 0 && loading ? 
         <>
             <div className='courses_page_header'>
-            <h1>Курсы по теме "{categories[currentCategory].title}"</h1>
+            {query === '' || query !== '' ? <h1>Поиск по запросу: {query}</h1> : 
+            <h1>Курсы по теме "{categories[currentCategory].title}"</h1>}
             <p>
                 {/* <i className="fa fa-user"/> */}
                 {/* <span>123348 студентов</span> */}
