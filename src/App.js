@@ -23,6 +23,7 @@ import EducationPage from './pages/EducationPage';
 import { courseTitleActionCreator, currentLessonActionCreator, fetchLessons, fetchMyCourses } from './store/mycoursesReducer';
 import MyCourse from './pages/MyCourse';
 import { changeQueryInput, getSearch, postSearchQuery } from './store/searchReducer';
+import { postPayment } from './store/paymentReducer';
 
 
 
@@ -107,6 +108,10 @@ function searchHandler(value) {
   dispatch(getSearch(value))
 }
 
+function postPaymentHandler(email, userId, courseList, fullname, courseId, price){
+  dispatch(postPayment(email, userId, courseList, fullname, courseId, price))
+}
+
 
 
 useEffect(()=>{
@@ -154,7 +159,11 @@ useEffect(()=>{
                                                           
                                                             />} />
           <Route path = "/course" element = {<CoursePage  currentCourse = {currentCourse} 
-                                                          teacher = {teacher}/>} />
+                                                          teacher = {teacher}
+                                                          postPaymentHandler = {postPaymentHandler}
+                                                          user = {user}
+                                                          />}
+                                                          />
 
           <Route path = "/signin" element = {<SignInPage  formControls = {formControls} 
                                                           changeInputHandler = {changeInputHandler}

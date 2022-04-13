@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import MyLoader from '../components/loader/MyLoader';
 import Rating from '../components/rating/Rating';
 import Review from '../components/review/Review';
@@ -9,13 +10,20 @@ import TeacherCard from '../components/teacher/TeacherCard';
 
 
 
-const CoursePage = ({currentCourse, teacher}) => {
+const CoursePage = ({currentCourse, teacher, postPaymentHandler, user}) => {
 
 
     const {fullname, logo, shortdescription, 
            rating, language, creationDate, 
            price, oldPrice, students, 
-           skills, knowledge, description, author } = currentCourse
+           skills, knowledge, description, author, courseId } = currentCourse
+
+           
+
+
+    const {email, userId, courseList} = user  
+    
+
 
     const skillsArr = String(skills).split('#') 
     const knowledgeArr = String(knowledge).split('#')
@@ -23,10 +31,10 @@ const CoursePage = ({currentCourse, teacher}) => {
     // const skillsArr = []
     // const knowledgeArr = []
           
-
+      
     return(
         <div className='course_page'>
-           {Object.keys(currentCourse).length > 0 && Object.keys(teacher).length > 0? 
+           {Object.keys(currentCourse).length > 0 && Object.keys(teacher).length > 0 ? 
             <>
             <div className='section1'>
                 <div className='section1_img'>
@@ -61,7 +69,7 @@ const CoursePage = ({currentCourse, teacher}) => {
                </div>
 
                <div className='section1_info_btn'>
-                    <button>
+                    <button onClick ={()=> postPaymentHandler(email, userId, courseList, fullname, courseId, price)}>
                         Оплатить курс
                     </button>
                </div>
