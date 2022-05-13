@@ -14,7 +14,7 @@ const CourseSearchCard = ({course, arg, arg2, teacher}) => {
         dispatch(getCurrentCourses(courseId, authorId))
       }
 
-const {rating, fullname, logo, shortdescription, price, oldPrice, students} = course
+const {rating, fullname, logo, shortdescription, price, oldPrice, students, author} = course
 
 
     return(
@@ -31,7 +31,7 @@ const {rating, fullname, logo, shortdescription, price, oldPrice, students} = co
             <p className='course_search_card_description'>
                 {shortdescription}
             </p>
-            <p className='course_card_author'>{teacher.fullname}</p>
+            <p className='course_card_author'>{author}</p>
             <p className='course_card_rating'>
                 <strong>{rating}</strong>
                 <span>

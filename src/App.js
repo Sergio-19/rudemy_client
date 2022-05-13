@@ -23,6 +23,8 @@ import EducationPage from './pages/EducationPage';
 import { courseTitleActionCreator, currentLessonActionCreator, fetchLessons, fetchMyCourses } from './store/mycoursesReducer';
 import MyCourse from './pages/MyCourse';
 import { changeQueryInput, getSearch, postSearchQuery } from './store/searchReducer';
+import { postPayment } from './store/paymentReducer';
+import AboutPage from './pages/AboutPage';
 
 
 
@@ -107,6 +109,10 @@ function searchHandler(value) {
   dispatch(getSearch(value))
 }
 
+function postPaymentHandler(email, userId, courseList, fullname, courseId, price){
+  dispatch(postPayment(email, userId, courseList, fullname, courseId, price))
+}
+
 
 
 useEffect(()=>{
@@ -115,8 +121,11 @@ useEffect(()=>{
 }, [])
 
 
+
   return (
-    <>
+    <div className='main'>
+
+    
       {/* <BuyNow /> */}
       <Burger navIsOpenHandler = {navIsOpenHandler}/>
       <Navigation navIsOpen = {navIsOpen} 
@@ -154,7 +163,11 @@ useEffect(()=>{
                                                           
                                                             />} />
           <Route path = "/course" element = {<CoursePage  currentCourse = {currentCourse} 
-                                                          teacher = {teacher}/>} />
+                                                          teacher = {teacher}
+                                                          postPaymentHandler = {postPaymentHandler}
+                                                          user = {user}
+                                                          />}
+                                                          />
 
           <Route path = "/signin" element = {<SignInPage  formControls = {formControls} 
                                                           changeInputHandler = {changeInputHandler}
@@ -177,14 +190,16 @@ useEffect(()=>{
                                                           courseTitle = {courseTitle}
                                                           currentLesson = {currentLesson}
                                                           currentLessonHandler = {currentLessonHandler}
-                                                          />} />                                                                                               
+                                                          />} /> 
+
+          <Route path = '/about' element = {<AboutPage />} />                                                                                                                                              
         </Routes>  
       </Layout> :
       <MyLoader />
       }
       <Footer />
-
-    </> 
+      </div>
+    
   );
 }
 

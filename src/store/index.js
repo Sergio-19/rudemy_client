@@ -7,13 +7,15 @@ import { navigationReducer } from './navigationReducer'
 import { loginReducer } from './loginReducer'
 import { mycoursesReducer } from './mycoursesReducer'
 import { searchReducer } from './searchReducer'
+import { paymentReducer } from './paymentReducer'
 
 const rootReducer = combineReducers({mainReducer,
                                      menuReducer,
                                      navigationReducer,
                                      loginReducer,
                                      mycoursesReducer,
-                                     searchReducer
+                                     searchReducer,
+                                     paymentReducer
 })
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

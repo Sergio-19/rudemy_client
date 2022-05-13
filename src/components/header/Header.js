@@ -30,7 +30,7 @@ const Header = ({showMenuHandler, tokenState, fetchMyCoursesHandler, changeSearc
     return(
         <header>
             <div className='header_logo'>
-                <a href ='/'>Rudemy</a>
+                <a href ='/'>ZenCourse</a>
             </div>
             <span className='header_category' onClick = {showMenuHandler} >Категории</span>
             <div className='header_input'>
@@ -51,7 +51,7 @@ const Header = ({showMenuHandler, tokenState, fetchMyCoursesHandler, changeSearc
             {tokenState !== '' ? <>
             <Link to = '/education' 
                   className='header_category'
-                  >Моё обучение</Link>
+                  >Личный кабинет</Link>
             <div className='header_buttons'>
                 <div className='button_light' onClick = {logoutHandler}>
                     <a href  ='/' >Выйти</a>

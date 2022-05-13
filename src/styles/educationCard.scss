@@ -5,8 +5,9 @@
 
 .education_card_wrap {
   width: 270px;
-  height: 400px;
+  min-height: 400px;
   margin: 10px;
+  padding: 0 0 8px 0;
   cursor: pointer;
   border-radius: 6px;
   overflow: hidden;

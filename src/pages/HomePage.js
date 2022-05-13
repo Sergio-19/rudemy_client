@@ -1,10 +1,11 @@
 import React from 'react'
 import MainBanner from '../components/mainBanner/MainBanner'
 import MainStand from '../components/mainStand/MainStand'
-import TopSlider from '../components/topslider/TopSlider'
 import Benefits from '../components/benefits/Benefits'
 import TopCategory from '../components/topCategory/TopCategory'
 import mainBanner from '../img/main-banner.jpg'
+import Slider from '../components/slider/Slider'
+
 
 
 
@@ -14,9 +15,7 @@ const HomePage = ({homeCourses, getCurrentCourseHomeHandler}) => {
         <MainBanner img = {mainBanner}/>
         <MainStand/> 
         <Benefits /> 
-        <TopSlider homeCourses = {homeCourses}
-                   getCurrentCourseHomeHandler = {getCurrentCourseHomeHandler} 
-        />
+        {/* <Slider homeCourses = {homeCourses} /> */}
         <TopCategory />
         </>
     )

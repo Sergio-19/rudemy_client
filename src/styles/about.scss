@@ -1,0 +1,20 @@
+.about_header {
+  width: 100%;
+  text-align: center;
+}
+
+.about_btn {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.about_text {
+  p {
+    span {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}

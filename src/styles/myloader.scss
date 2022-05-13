@@ -1,8 +1,9 @@
 .myloader_wrap {
   display: flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   padding-top: 150px;
+  min-height: 100vh;
 }
 
 .lds-facebook {

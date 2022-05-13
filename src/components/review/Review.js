@@ -1,8 +1,9 @@
 import React from 'react'
+import Rating from '../rating/Rating';
 
 
 
-const Review = ({user}) => {
+const Review = ({user, text, rating}) => {
 
     return(
         <div className='review_wrap'>
@@ -14,25 +15,15 @@ const Review = ({user}) => {
 
             <div className='review'>
                 <div className='review_head'>
-                    <h4>{user}</h4>
                     <div className='review_head_rating'>
-                    <i className='fa fa-star'/>
-                    <i className='fa fa-star'/>
-                    <i className='fa fa-star'/>
-                    <i className='fa fa-star'/>
-                    <i className='fa fa-star'/>
-                    <span>Неделю назад</span>
+                    <h4>{user}</h4>
+                    <Rating rating={rating} />
                     </div>
                 </div>
 
                 <div className='review_text'>
                     <p>
-                    Если коротко, то 10 звёзд
-                    JavaScript лучше объяснить не сможет никто !
-                    Надеюсь React будет таким же, ведь большую часть именно он и занимает.
-                    И так же надеюсь, что со знанием React я наконец стану Middle )
-                    Если будет обратная связь, будет шикарно.
-                    Рекомендую всем, кто не разбирается в js - это лучшее для начинающий и знающих азы курс
+                   {text}
                     </p>
                 </div>
             </div>

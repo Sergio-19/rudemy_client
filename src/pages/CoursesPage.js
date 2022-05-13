@@ -26,7 +26,7 @@ const CoursesPage = ({categories, currentCategory, courses, loading, teacher, qu
                     <span><i className='fa fa-filter'/> &nbsp; Фильтровать</span>
                 </div>
                 <span>
-                    Рузультат: {courses.length}
+                    Результат: {courses.length}
                 </span>
             </div>
 

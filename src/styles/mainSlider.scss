@@ -8,6 +8,18 @@
   align-items: center;
 }
 
+.main_stand_slider_header {
+  h2 {
+    margin: 15px 0;
+  }
+
+  p {
+    display: block;
+    margin: 15px 0;
+    min-height: 130px;
+  }
+}
+
 .main_slider_window {
   width: 80%;
   height: 340px;

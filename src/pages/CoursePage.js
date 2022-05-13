@@ -9,24 +9,49 @@ import TeacherCard from '../components/teacher/TeacherCard';
 
 
 
-const CoursePage = ({currentCourse, teacher}) => {
+const CoursePage = ({currentCourse, teacher, postPaymentHandler, user}) => {
 
 
     const {fullname, logo, shortdescription, 
            rating, language, creationDate, 
            price, oldPrice, students, 
-           skills, knowledge, description, author } = currentCourse
+           skills, knowledge, description, author, courseId, reviews } = currentCourse
+
+          
+
+
+    const {email, userId, courseList} = user  
+    
+
 
     const skillsArr = String(skills).split('#') 
     const knowledgeArr = String(knowledge).split('#')
 
     // const skillsArr = []
     // const knowledgeArr = []
-          
 
+    
+// class Review {
+//   constructor(user, text, rating){
+//     this.user = user
+//     this.text = text
+//     this.rating = rating
+//   }
+//   } 
+
+const reviewsArr = String(reviews).split('#')
+const finishReviewArray = []
+
+reviewsArr.forEach((review)=>{
+  let arr = String(review).split('%')
+  finishReviewArray.push({user: arr[0], text: arr[1], rating: Number(arr[2])})
+})
+
+          
+      
     return(
         <div className='course_page'>
-           {Object.keys(currentCourse).length > 0 && Object.keys(teacher).length > 0? 
+           {Object.keys(currentCourse).length > 0 && Object.keys(teacher).length > 0 ? 
             <>
             <div className='section1'>
                 <div className='section1_img'>
@@ -61,7 +86,7 @@ const CoursePage = ({currentCourse, teacher}) => {
                </div>
 
                <div className='section1_info_btn'>
-                    <button>
+                    <button onClick ={()=> postPaymentHandler(email, userId, courseList, fullname, courseId, price)}>
                         Оплатить курс
                     </button>
                </div>
@@ -102,13 +127,13 @@ const CoursePage = ({currentCourse, teacher}) => {
             <Section2 title = "Преподаватель">
                 <TeacherCard teacher = {teacher}/>
             </Section2>
-            <Section2 title = "Отзывы">
-               <Review user = "Максим"/>
-               <Review user = "Андрей"/>
-               <Review user = "Boris Y"/>
-               <Review user = "Nikita"/>
-               <Review user = "Andrei Z"/>
-               <Review user = "Виктор"/>
+            <Section2 title = "Последние отзывы">
+               {finishReviewArray.map((review)=>{
+                   return(
+                    <Review user = {review.user} rating={review.rating} text = {review.text}/>
+                   )
+               })}
+               
             </Section2>
             </>
            : <MyLoader />

@@ -10,7 +10,8 @@
   top: 74px;
   left: 180px;
   z-index: $menu_index;
-  visibility: hidden;
+  // visibility: hidden;
+  display: none;
 }
 
 .menu_header {
@@ -47,5 +48,6 @@
 }
 
 .menu_wrap_show {
-  visibility: visible;
+  // visibility: visible;
+  display: block;
 }

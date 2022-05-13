@@ -28,7 +28,7 @@ const EducationPage = ({user, myCourses, myLoading, lessons, fetchLessonsHandler
     return(
         <div className='education_page'>
           {Object.keys(user).length > 0 ? 
-             <Section2 title={'Мои курсы'}>
+             <Section2 title={'Моё обучение'}>
              <div className='education_courses'>
                  {myLoading && myCourses.length > 0 ? myCourses.map((course, i)=> {
                      return( 
