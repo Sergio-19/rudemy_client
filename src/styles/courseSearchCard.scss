@@ -1,7 +1,7 @@
 .course_search_card {
   text-decoration: none;
-  width: 100%;
   min-height: 170px;
+  min-width: 300px;
   background: rgb(240, 238, 238);
   display: flex;
   justify-content: space-between;
@@ -10,14 +10,15 @@
   margin: 15px;
   cursor: pointer;
   transition: all 0.2s ease;
-  padding: 5px;
+  padding: 10px 5px;
   &:hover {
     background: rgb(223, 221, 221);
   }
 }
 
 .course_search_card_img {
-  width: 250px;
+  width: 100%;
+  max-width: 350px;
   height: 100%;
   img {
     width: 100%;
@@ -27,6 +28,7 @@
 
 .course_search_card_info {
   max-width: 700px;
+  padding: 0 8px;
 }
 
 .course_search_card_description {

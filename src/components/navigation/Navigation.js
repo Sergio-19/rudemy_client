@@ -50,7 +50,7 @@ const Navigation = ({navIsOpen, navGetCoursesHandler, navIsOpenHandler, tokenSta
                         >Выйти</ a>
                         <Link to = '/education'
                               onClick = {navIsOpenHandler}  
-                        >Моё обучение</Link>
+                        >Личный кабинет</Link>
                 </div> :
                  <div className='navigation_login'>
                  <Link to = '/signin'

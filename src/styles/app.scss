@@ -24,6 +24,9 @@
 @import "./education.scss";
 @import "./educationCard.scss";
 @import "./myCourse.scss";
+@import "./sliderV2.scss";
+@import "./about.scss";
+@import "./slider.scss";
 
 * {
   margin: 0;
@@ -54,4 +57,7 @@ body {
     font-family: "Roboto", sans-serif;
     font-size: 16px;
   }
+}
+
+.main {
 }

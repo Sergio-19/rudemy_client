@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
 import MyLoader from '../components/loader/MyLoader';
 import Rating from '../components/rating/Rating';
 import Review from '../components/review/Review';
@@ -16,9 +15,9 @@ const CoursePage = ({currentCourse, teacher, postPaymentHandler, user}) => {
     const {fullname, logo, shortdescription, 
            rating, language, creationDate, 
            price, oldPrice, students, 
-           skills, knowledge, description, author, courseId } = currentCourse
+           skills, knowledge, description, author, courseId, reviews } = currentCourse
 
-           
+          
 
 
     const {email, userId, courseList} = user  
@@ -30,6 +29,24 @@ const CoursePage = ({currentCourse, teacher, postPaymentHandler, user}) => {
 
     // const skillsArr = []
     // const knowledgeArr = []
+
+    
+// class Review {
+//   constructor(user, text, rating){
+//     this.user = user
+//     this.text = text
+//     this.rating = rating
+//   }
+//   } 
+
+const reviewsArr = String(reviews).split('#')
+const finishReviewArray = []
+
+reviewsArr.forEach((review)=>{
+  let arr = String(review).split('%')
+  finishReviewArray.push({user: arr[0], text: arr[1], rating: Number(arr[2])})
+})
+
           
       
     return(
@@ -110,13 +127,13 @@ const CoursePage = ({currentCourse, teacher, postPaymentHandler, user}) => {
             <Section2 title = "Преподаватель">
                 <TeacherCard teacher = {teacher}/>
             </Section2>
-            <Section2 title = "Отзывы">
-               <Review user = "Максим"/>
-               <Review user = "Андрей"/>
-               <Review user = "Boris Y"/>
-               <Review user = "Nikita"/>
-               <Review user = "Andrei Z"/>
-               <Review user = "Виктор"/>
+            <Section2 title = "Последние отзывы">
+               {finishReviewArray.map((review)=>{
+                   return(
+                    <Review user = {review.user} rating={review.rating} text = {review.text}/>
+                   )
+               })}
+               
             </Section2>
             </>
            : <MyLoader />
