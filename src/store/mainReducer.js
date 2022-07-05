@@ -171,7 +171,7 @@ export function getCurrentCourses(courseId, authorId){
                 dispatch(clearTeacherActionCreator())
                 const response = await axios.post('http://45.67.59.112:8080/course/teacher', {authorId})
                 const data = response.data 
-                const teacher = data.author[0]  
+                const teacher = data.author  
                 dispatch(getTeacherActionCreator(teacher))  
              await setTimeout(()=>{
                 dispatch({type: GET_CURRENT_COURSE_COURSES, payload: courseId})

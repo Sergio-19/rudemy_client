@@ -26,18 +26,7 @@ const CoursePage = ({currentCourse, teacher, postPaymentHandler, user}) => {
 
     const skillsArr = String(skills).split('#') 
     const knowledgeArr = String(knowledge).split('#')
-
-    // const skillsArr = []
-    // const knowledgeArr = []
-
-    
-// class Review {
-//   constructor(user, text, rating){
-//     this.user = user
-//     this.text = text
-//     this.rating = rating
-//   }
-//   } 
+ 
 
 const reviewsArr = String(reviews).split('#')
 const finishReviewArray = []
@@ -47,8 +36,6 @@ reviewsArr.forEach((review)=>{
   finishReviewArray.push({user: arr[0], text: arr[1], rating: Number(arr[2])})
 })
 
-          
-      
     return(
         <div className='course_page'>
            {Object.keys(currentCourse).length > 0 && Object.keys(teacher).length > 0 ? 

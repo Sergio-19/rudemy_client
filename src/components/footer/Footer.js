@@ -14,6 +14,7 @@ const Footer = () => {
                         <li>О нас</li>
                         <li>E-mail: zencourse@gmail.com</li>
                         <li>Tel: +7 (812) 241-36-07</li>
+                        <li><a href = 'http://m921098l.beget.tech/' target={'_blank'}>Admin</a></li>
                     </ul>
                 </div>
                 <div className='footer_content_dop'>

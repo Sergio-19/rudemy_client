@@ -35,7 +35,8 @@ export function clearPaymentActionCreator(){
 
 export function postPayment(email, userId, courseList, fullname, courseId, price){
     return async (dispatch) => {
-        const payment = {email, userId, courseList, fullname, courseId, price, read: false}
+        let newDate = String(`${new Date().getUTCDate()}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`)
+        const payment = {email, userId, courseList, fullname, courseId, price, read: false, date: newDate}
         await axios.post(`https://rudemy-510b2-default-rtdb.firebaseio.com/payments.json`, payment)
         window.location.href = 'https://www.blitzscript.ru/payment'
 
